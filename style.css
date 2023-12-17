@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ddd8d8;
+
+}
+
+input,
+button {
+    font-family: 'Inter', sans-serif;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.game-container .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.game-container .header h1 {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+}
+
+.game-container .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 15px;
+
+}
+
+.score .player1,
+.player2 {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+}
+
+.game-container .game-box {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    text-align: center;
+    border: 10px ridge;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.game-container .game-box .box {
+    border: 2px ridge #666666;
+    padding: 50px;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 2rem;
+
+}
+
+.box.x {
+    color: #fff;
+    background-color: #3498db;
+}
+
+.box.o {
+    color: #fff;
+    background-color: #e74c3c;
+}
+
+.box.winner {
+    color: #fff;
+    background-color: #2ecc71;
+}
+
+
+/* Modals */
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.modal {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    /* transform: translateY(-100px); */
+    transition: all 0.3s ease-in-out;
+}
+
+.remove {
+    display: none;
+}
+
+.player-name-modal .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content input {
+    padding: 10px;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.modal-content button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Restart BTN */
+
+.restart #restart-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #db3434;
+    color: #fff;
+}

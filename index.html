@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="modal player-name-modal">
+        <div class="modal-content">
+          <h1>Enter Player Names:</h1>
+          <input type="text" placeholder="X" id="player-one-name" />
+          <input type="text" placeholder="O" id="player-two-name" />
+          <button id="start">Start</button>
+        </div>
+      </div>
+    </div>
+    <div class="game-container">
+      <div class="header">
+        <h1>Tic-Tac-Toe</h1>
+      </div>
+      <div class="game-box">
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+      </div>
+      <div class="score">
+        <div class="player1">
+          <span id="player1">Player 1</span>
+          <span class="player1-score">0</span>
+        </div>
+        <div class="player2">
+          <span id="player2">Player 2</span>
+          <span class="player2-score">0</span>
+        </div>
+
+        <div class="restart">
+          <button id="restart-btn">Restart</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
