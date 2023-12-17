@@ -44,7 +44,7 @@ button {
 .game-container .score {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     margin-top: 10px;
     gap: 15px;
 
@@ -54,7 +54,7 @@ button {
 .player2 {
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     flex-direction: column;
     gap: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);

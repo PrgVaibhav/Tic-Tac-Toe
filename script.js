@@ -1,6 +1,6 @@
 const boxes = document.querySelectorAll(".box");
-const player1Score = document.querySelector(".player1-moves");
-const player2Score = document.querySelector(".player2-moves");
+const player1Score = document.querySelector(".player1-score");
+const player2Score = document.querySelector(".player2-score");
 
 const playerOneName = document.getElementById("player-one-name");
 const playerTwoName = document.getElementById("player-two-name");
