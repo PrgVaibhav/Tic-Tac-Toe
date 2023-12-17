@@ -19,6 +19,7 @@ let count = true;
 let playerOneScore = 0;
 let playerTwoScore = 0;
 
+restart.classList.add("remove");
 const successAudio = new Audio("winner.mp3");
 
 startBtn.addEventListener("click", getNames);
@@ -60,6 +61,7 @@ for (const box of boxes) {
     if (count) {
       box.innerHTML = "X";
       box.classList.add("x");
+      restart.classList.remove("remove");
       count = false;
     } else {
       box.innerHTML = "O";
@@ -77,7 +79,7 @@ function winner() {
     let p2 = boxes[pattern[1]].innerHTML;
     let p3 = boxes[pattern[2]].innerHTML;
 
-    if (p1 !== "" && p1 === p2 && p2 === p3) {
+    if (p1 !== "" && p2 !== "" && p3 !== "") {
       if (p1 === p2 && p2 === p3) {
         boxes[pattern[0]].classList.add("winner");
         boxes[pattern[1]].classList.add("winner");

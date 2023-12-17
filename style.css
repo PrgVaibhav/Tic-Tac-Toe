@@ -11,6 +11,12 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: #ddd8d8;
+    /* background-image: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, 0.55)), url("bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; */
 
 }
 
@@ -33,12 +39,11 @@ button {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-
-}
-
-.game-container .header h1 {
+    background-color: #fff;
+    border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     padding: 10px;
+
 }
 
 .game-container .score {
@@ -59,6 +64,8 @@ button {
     gap: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     padding: 10px;
+    background-color: #ffff;
+    border-radius: 10px;
 }
 
 .game-container .game-box {
@@ -143,16 +150,29 @@ button {
     align-items: stretch;
     flex-direction: column;
     gap: 10px;
+
+
 }
 
 .modal-content input {
     padding: 10px;
-    border: 1px solid #666666;
+    border: none;
     border-radius: 5px;
     outline: none;
+
     width: 100%;
     font-size: 1rem;
+    background-color: rgb(206, 206, 206);
+    box-shadow: 0 0 10px #d8d8d8;
+
+    transition: all .3s ease-in-out;
 }
+
+.modal-content input:focus-within {
+    background-color: #fff;
+    box-shadow: 0 0 5px #666666;
+}
+
 
 .modal-content button {
     padding: 10px;
@@ -164,6 +184,7 @@ button {
     cursor: pointer;
     background-color: #3498db;
     color: #fff;
+    box-shadow: 0 0 5px #555;
 }
 
 /* Restart BTN */
@@ -178,4 +199,15 @@ button {
     cursor: pointer;
     background-color: #db3434;
     color: #fff;
+    transition: all .3s linear;
+}
+
+.restart #restart-btn:focus {
+    transform: translateY(5px);
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content h1 {
+        font-size: 1.5rem;
+    }
 }
