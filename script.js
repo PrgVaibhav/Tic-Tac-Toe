@@ -1,14 +1,18 @@
 const boxes = document.querySelectorAll(".box");
+
 const player1Score = document.querySelector(".player1-score");
 const player2Score = document.querySelector(".player2-score");
 
-const playerOneName = document.getElementById("player-one-name");
-const playerTwoName = document.getElementById("player-two-name");
-
-const startBtn = document.getElementById("start");
+const playerOneInput = document.getElementById("player-one-name");
+const playerTwoInput = document.getElementById("player-two-name");
 
 const player1Name = document.getElementById("player1");
 const player2Name = document.getElementById("player2");
+
+const currentPlayerOne = document.getElementById("current-player-1");
+const currentPlayerTwo = document.getElementById("current-player-2");
+
+const startBtn = document.getElementById("start");
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
@@ -27,19 +31,19 @@ startBtn.addEventListener("click", getNames);
 function getNames(e) {
   e.preventDefault();
 
-  if (playerOneName.value === "" || playerTwoName.value === "") {
+  if (playerOneInput.value === "" || playerTwoInput.value === "") {
     alert("Please enter player names");
     return;
   }
 
-  const playerOne = playerOneName.value;
-  const playerTwo = playerTwoName.value;
+  const playerOne = playerOneInput.value;
+  const playerTwo = playerTwoInput.value;
 
   player1Name.innerHTML = playerOne;
   player2Name.innerHTML = playerTwo;
 
-  playerOneName.value = "";
-  playerTwoName.value = "";
+  playerOneInput.value = "";
+  playerTwoInput.value = "";
 
   modal.classList.add("remove");
   overlay.classList.add("remove");
@@ -62,6 +66,7 @@ for (const box of boxes) {
       box.innerHTML = "X";
       box.classList.add("x");
       restart.classList.remove("remove");
+
       count = false;
     } else {
       box.innerHTML = "O";
@@ -86,6 +91,10 @@ function winner() {
         boxes[pattern[2]].classList.add("winner");
         successAudio.play();
 
+        setTimeout(() => {
+          restartGame();
+        }, 700);
+
         if (p1 === "X") {
           playerOneScore++;
           player1Score.innerHTML = playerOneScore;
@@ -102,12 +111,19 @@ function winner() {
   }
 }
 
-restart.addEventListener("click", () => {
+restart.addEventListener("click", restartGame);
+
+function restartGame() {
   for (const box of boxes) {
+    box.classList.add("animation");
     box.innerHTML = "";
     box.classList.remove("x");
     box.classList.remove("o");
     box.classList.remove("winner");
+
+    setTimeout(() => {
+      box.classList.remove("animation");
+    }, 700);
     box.disabled = false;
   }
-});
+}

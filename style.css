@@ -55,8 +55,8 @@ button {
 
 }
 
-.score .player1,
-.player2 {
+.score #current-player-1,
+#current-player-2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +68,11 @@ button {
     border-radius: 10px;
 }
 
+#current-player-1.current,
+#current-player-2.current {
+    background: greenyellow;
+}
+
 .game-container .game-box {
 
     display: grid;
@@ -76,6 +81,10 @@ button {
     text-align: center;
     border: 10px ridge;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.animation {
+    animation: bomb 0.5s ease-in-out;
 }
 
 .game-container .game-box .box {
@@ -210,4 +219,15 @@ button {
     .modal-content h1 {
         font-size: 1.5rem;
     }
+}
+
+@keyframes bomb {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
 }
