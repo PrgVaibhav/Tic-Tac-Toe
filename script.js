@@ -19,6 +19,8 @@ const overlay = document.querySelector(".overlay");
 
 const restart = document.getElementById("restart-btn");
 
+const message = document.getElementById("message");
+
 let count = true;
 let playerOneScore = 0;
 let playerTwoScore = 0;
@@ -28,6 +30,7 @@ const successAudio = new Audio("winner.mp3");
 
 startBtn.addEventListener("click", getNames);
 
+// Getting names of players from input
 function getNames(e) {
   e.preventDefault();
 
@@ -49,6 +52,23 @@ function getNames(e) {
   overlay.classList.add("remove");
 }
 
+const messageArr = [
+  "OOH!! That was a good move 👀",
+  "Let's see what you'll do 💪",
+  "Great move! Keep it up! 👍",
+  "You're on fire! 🔥",
+  "Nice strategy! What's your next move? 🤔",
+  "Awesome move! Your opponent has some competition! 💪",
+  "You're playing like a pro! 🏆",
+  "Unleash your inner Tic Tac Toe master! 🚀",
+  "Smooth move! Your opponent is feeling the pressure. 😅",
+  "Impressive! Your opponent is in trouble. 😎",
+  "You're dominating the board! Keep going! 💯",
+  "Strategize, captivate, dominate! 🎮",
+  "Winning vibes! Can you keep it up? ✨",
+  "Epic move! Your opponent is in awe. 😲",
+];
+
 const winningPattern = [
   [0, 1, 2],
   [3, 4, 5],
@@ -60,6 +80,8 @@ const winningPattern = [
   [2, 4, 6],
 ];
 
+// Game Logic
+
 for (const box of boxes) {
   box.addEventListener("click", () => {
     if (count) {
@@ -67,16 +89,33 @@ for (const box of boxes) {
       box.classList.add("x");
       restart.classList.remove("remove");
 
+      message.innerHTML =
+        messageArr[Math.floor(Math.random() * messageArr.length)];
+      message.classList.add("animation");
+
+      setTimeout(() => {
+        message.classList.remove("animation");
+      }, 700);
+
       count = false;
     } else {
       box.innerHTML = "O";
       box.classList.add("o");
+      message.innerHTML =
+        messageArr[Math.floor(Math.random() * messageArr.length)];
+      message.classList.add("animation");
+
+      setTimeout(() => {
+        message.classList.remove("animation");
+      }, 700);
       count = true;
     }
     box.disabled = true;
     winner();
   });
 }
+
+//Deciding winner
 
 function winner() {
   for (const pattern of winningPattern) {
@@ -90,7 +129,6 @@ function winner() {
         boxes[pattern[1]].classList.add("winner");
         boxes[pattern[2]].classList.add("winner");
         successAudio.play();
-
         setTimeout(() => {
           restartGame();
         }, 700);
@@ -113,6 +151,7 @@ function winner() {
 
 restart.addEventListener("click", restartGame);
 
+// Restart game logic
 function restartGame() {
   for (const box of boxes) {
     box.classList.add("animation");
@@ -120,6 +159,7 @@ function restartGame() {
     box.classList.remove("x");
     box.classList.remove("o");
     box.classList.remove("winner");
+    message.innerHTML = "Let's play again 💪";
 
     setTimeout(() => {
       box.classList.remove("animation");
