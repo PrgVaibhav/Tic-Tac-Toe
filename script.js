@@ -52,23 +52,6 @@ function getNames(e) {
   overlay.classList.add("remove");
 }
 
-const messageArr = [
-  "OOH!! That was a good move 👀",
-  "Let's see what you'll do 💪",
-  "Great move! Keep it up! 👍",
-  "You're on fire! 🔥",
-  "Nice strategy! What's your next move? 🤔",
-  "Awesome move! Your opponent has some competition! 💪",
-  "You're playing like a pro! 🏆",
-  "Unleash your inner Tic Tac Toe master! 🚀",
-  "Smooth move! Your opponent is feeling the pressure. 😅",
-  "Impressive! Your opponent is in trouble. 😎",
-  "You're dominating the board! Keep going! 💯",
-  "Strategize, captivate, dominate! 🎮",
-  "Winning vibes! Can you keep it up? ✨",
-  "Epic move! Your opponent is in awe. 😲",
-];
-
 const winningPattern = [
   [0, 1, 2],
   [3, 4, 5],
@@ -88,26 +71,13 @@ for (const box of boxes) {
       box.innerHTML = "X";
       box.classList.add("x");
       restart.classList.remove("remove");
-
-      message.innerHTML =
-        messageArr[Math.floor(Math.random() * messageArr.length)];
-      message.classList.add("animation");
-
-      setTimeout(() => {
-        message.classList.remove("animation");
-      }, 700);
+      getMessage();
 
       count = false;
     } else {
       box.innerHTML = "O";
       box.classList.add("o");
-      message.innerHTML =
-        messageArr[Math.floor(Math.random() * messageArr.length)];
-      message.classList.add("animation");
-
-      setTimeout(() => {
-        message.classList.remove("animation");
-      }, 700);
+      getMessage();
       count = true;
     }
     box.disabled = true;
@@ -131,7 +101,7 @@ function winner() {
         successAudio.play();
         setTimeout(() => {
           restartGame();
-        }, 700);
+        }, 1000);
 
         if (p1 === "X") {
           playerOneScore++;
@@ -166,4 +136,32 @@ function restartGame() {
     }, 700);
     box.disabled = false;
   }
+}
+
+// Messages for players
+
+function getMessage() {
+  const messageArr = [
+    "OOH!! That was a good move 👀",
+    "Let's see what you'll do 💪",
+    "Great move! Keep it up! 👍",
+    "You're on fire! 🔥",
+    "Nice strategy! What's your next move? 🤔",
+    "Awesome move! Your opponent has some competition! 💪",
+    "You're playing like a pro! 🏆",
+    "Unleash your inner Tic Tac Toe master! 🚀",
+    "Smooth move! Your opponent is feeling the pressure. 😅",
+    "Impressive! Your opponent is in trouble. 😎",
+    "You're dominating the board! Keep going! 💯",
+    "Strategize, captivate, dominate! 🎮",
+    "Winning vibes! Can you keep it up? ✨",
+    "Epic move! Your opponent is in awe. 😲",
+  ];
+
+  message.innerHTML = messageArr[Math.floor(Math.random() * messageArr.length)];
+  message.classList.add("animation");
+
+  setTimeout(() => {
+    message.classList.remove("animation");
+  }, 700);
 }
